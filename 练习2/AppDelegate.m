@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "MainController.h"
 
 @implementation AppDelegate
 
@@ -15,8 +16,31 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+//    [self openUrl];
+    // unsigned long用lu来表示
+//    NSLog(@"%d",NSNotFound);
+    
+    MainController *mainCtr = [[MainController alloc] init];
+    mainCtr.youfuwuUserinfos=[NSDictionary dictionaryWithObjectsAndKeys:@"928612",@"youxinid",@"123456",@"youxinPassword",@"113.64964385",@"longitude",@"34.75661006",@"latitude",@"268",@"citycode", nil];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:mainCtr];
+    [self.window setRootViewController:nav];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+// 打开url
+- (void)openUrl
+{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    [btn setFrame:CGRectMake(100, 100, 100, 100)];
+    [self.window addSubview:btn];
+    [btn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)btnClick
+{
+    NSString *str = @"https://itunes.apple.com/cn/app/you-xin-zhi-jian/id906626284?mt=8";
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -45,5 +69,25 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
+- (void)zhishidian
+{
+    // 知识点总结
+    /*
+     compare 用来比较两个字符串，将接收到的对象和传递进来的字符串进行比较。返回一个NSComparisionResult的值来显示结果 -1升序 0等于 1降序
+     
+     */
+}
+
+
+
+
+
+
+
+
+
+
 
 @end
